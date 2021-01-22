@@ -1,0 +1,396 @@
+{
+  "contractName": "CortexI",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "_target",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "call_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "delegateFunctionCall",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"_target\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"call_data\",\"type\":\"bytes\"}],\"name\":\"delegateFunctionCall\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"delegateFunctionCall(address,uint256,bytes)\":{\"params\":{\"_amount\":\"is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\",\"_target\":\"is the target address where the function will be called\",\"call_data\":\"is a bytes representation of the function the Cortex is calling and its input paramters*\"}}}},\"userdoc\":{\"methods\":{\"delegateFunctionCall(address,uint256,bytes)\":{\"notice\":\"delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\"}},\"notice\":\"The CortexI contract is an interface contract used by neurons to delegate a call to the Cortex Contract*\"}},\"settings\":{\"compilationTarget\":{\"/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol\":\"CortexI\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol\":{\"keccak256\":\"0x15f1fdad89c29abe0ed29c6e0c7ec2950e0a3251604f480e2b8e74ad10ee5c32\",\"urls\":[\"bzz-raw://b3435a64986cd52b9b0251a311662ff43023432692df739cab6819ba73473ef4\",\"dweb:/ipfs/QmR9Nkgdi3trgzEi1iVQWv38ZahUezFaFfQw7Sn1ydey8r\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.6.2;\n\n/// @title CortexI\n/// @author Christopher Dixon\n////////////////////////////////////////////////////////////////////////////////////////////\n/**\nThe CortexI contract is an interface contract used by neurons to delegate a call to the\n    Cortex Contract\n**/\n\nabstract contract CortexI {\n    /**\n  @notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n  @param _target is the target address where the function will be called\n  @param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n  @param call_data is a bytes representation of the function the Cortex is calling and its input paramters\n  **/\n    function delegateFunctionCall(\n        address payable _target,\n        uint256 _amount,\n        bytes memory call_data\n    ) public virtual;\n}\n",
+  "sourcePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol",
+  "ast": {
+    "absolutePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol",
+    "exportedSymbols": {
+      "CortexI": [
+        1671
+      ]
+    },
+    "id": 1672,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1659,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:5"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1660,
+          "nodeType": "StructuredDocumentation",
+          "src": "167:115:5",
+          "text": "The CortexI contract is an interface contract used by neurons to delegate a call to the\nCortex Contract*"
+        },
+        "fullyImplemented": false,
+        "id": 1671,
+        "linearizedBaseContracts": [
+          1671
+        ],
+        "name": "CortexI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": {
+              "id": 1661,
+              "nodeType": "StructuredDocumentation",
+              "src": "316:399:5",
+              "text": "@notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n@param _target is the target address where the function will be called\n@param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n@param call_data is a bytes representation of the function the Cortex is calling and its input paramters*"
+            },
+            "functionSelector": "92bd66c0",
+            "id": 1670,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "delegateFunctionCall",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1668,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1663,
+                  "mutability": "mutable",
+                  "name": "_target",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1670,
+                  "src": "759:23:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 1662,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "759:15:5",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1665,
+                  "mutability": "mutable",
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1670,
+                  "src": "792:15:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1664,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "792:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1667,
+                  "mutability": "mutable",
+                  "name": "call_data",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1670,
+                  "src": "817:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 1666,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "817:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "749:96:5"
+            },
+            "returnParameters": {
+              "id": 1669,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "860:0:5"
+            },
+            "scope": 1671,
+            "src": "720:141:5",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1672,
+        "src": "284:579:5"
+      }
+    ],
+    "src": "0:864:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol",
+    "exportedSymbols": {
+      "CortexI": [
+        1671
+      ]
+    },
+    "id": 1672,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1659,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:5"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1660,
+          "nodeType": "StructuredDocumentation",
+          "src": "167:115:5",
+          "text": "The CortexI contract is an interface contract used by neurons to delegate a call to the\nCortex Contract*"
+        },
+        "fullyImplemented": false,
+        "id": 1671,
+        "linearizedBaseContracts": [
+          1671
+        ],
+        "name": "CortexI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": {
+              "id": 1661,
+              "nodeType": "StructuredDocumentation",
+              "src": "316:399:5",
+              "text": "@notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n@param _target is the target address where the function will be called\n@param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n@param call_data is a bytes representation of the function the Cortex is calling and its input paramters*"
+            },
+            "functionSelector": "92bd66c0",
+            "id": 1670,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "delegateFunctionCall",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1668,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1663,
+                  "mutability": "mutable",
+                  "name": "_target",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1670,
+                  "src": "759:23:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  },
+                  "typeName": {
+                    "id": 1662,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "759:15:5",
+                    "stateMutability": "payable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1665,
+                  "mutability": "mutable",
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1670,
+                  "src": "792:15:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1664,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "792:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1667,
+                  "mutability": "mutable",
+                  "name": "call_data",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1670,
+                  "src": "817:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 1666,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "817:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "749:96:5"
+            },
+            "returnParameters": {
+              "id": 1669,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "860:0:5"
+            },
+            "scope": 1671,
+            "src": "720:141:5",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1672,
+        "src": "284:579:5"
+      }
+    ],
+    "src": "0:864:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.6+commit.6c089d02.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2021-01-22T01:08:56.694Z",
+  "devdoc": {
+    "methods": {
+      "delegateFunctionCall(address,uint256,bytes)": {
+        "params": {
+          "_amount": "is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)",
+          "_target": "is the target address where the function will be called",
+          "call_data": "is a bytes representation of the function the Cortex is calling and its input paramters*"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "delegateFunctionCall(address,uint256,bytes)": {
+        "notice": "delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex"
+      }
+    },
+    "notice": "The CortexI contract is an interface contract used by neurons to delegate a call to the Cortex Contract*"
+  }
+}

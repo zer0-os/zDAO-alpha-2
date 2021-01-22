@@ -1,0 +1,338 @@
+{
+  "contractName": "NeuronFactoryI",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_DAO",
+          "type": "address"
+        }
+      ],
+      "name": "genesis",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_DAO\",\"type\":\"address\"}],\"name\":\"genesis\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"genesis(address)\":{\"params\":{\"_DAO\":\"is the address of the Cortex DAO that will own the created FrontalLobe*\"}}}},\"userdoc\":{\"methods\":{\"genesis(address)\":{\"notice\":\"genesis is called to create a new FrontalLobe contract\"}},\"notice\":\"The NeuronFactoryI contract is an interface contract used by the Hippocampus to select a Neuron by name and genesis a new intstance of that neuron from is Neuron Factory*\"}},\"settings\":{\"compilationTarget\":{\"/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronFactoryI.sol\":\"NeuronFactoryI\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronFactoryI.sol\":{\"keccak256\":\"0x93ebf0f7a12398c87cd9ef99a64c551d372e7238d60a75abaa12225daed765e2\",\"urls\":[\"bzz-raw://b21fdf5eb62f8520fdcbf9fa4723df4cc239b69656fe0b4c578459e6e2a9a927\",\"dweb:/ipfs/QmeTyBpynxfY9sUXisUzwveE6y6habTbZvcJSvL4ydLGQa\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.6.2;\n\n/// @title NeuronFactoryI\n/// @author Christopher Dixon\n////////////////////////////////////////////////////////////////////////////////////////////\n/**\nThe NeuronFactoryI contract is an interface contract used by the Hippocampus to select a Neuron by name and genesis a\n      new intstance of that neuron from is Neuron Factory\n**/\n\nabstract contract NeuronFactoryI {\n    /**\n  @notice genesis is called to create a new FrontalLobe contract\n  @param _DAO is the address of the Cortex DAO that will own the created\n          FrontalLobe\n  **/\n    function genesis(address _DAO) public virtual returns (address);\n}\n",
+  "sourcePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronFactoryI.sol",
+  "ast": {
+    "absolutePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronFactoryI.sol",
+    "exportedSymbols": {
+      "NeuronFactoryI": [
+        1683
+      ]
+    },
+    "id": 1684,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1673,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:6"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1674,
+          "nodeType": "StructuredDocumentation",
+          "src": "174:183:6",
+          "text": "The NeuronFactoryI contract is an interface contract used by the Hippocampus to select a Neuron by name and genesis a\nnew intstance of that neuron from is Neuron Factory*"
+        },
+        "fullyImplemented": false,
+        "id": 1683,
+        "linearizedBaseContracts": [
+          1683
+        ],
+        "name": "NeuronFactoryI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": {
+              "id": 1675,
+              "nodeType": "StructuredDocumentation",
+              "src": "398:169:6",
+              "text": "@notice genesis is called to create a new FrontalLobe contract\n@param _DAO is the address of the Cortex DAO that will own the created\nFrontalLobe*"
+            },
+            "functionSelector": "77222509",
+            "id": 1682,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "genesis",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1678,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1677,
+                  "mutability": "mutable",
+                  "name": "_DAO",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1682,
+                  "src": "589:12:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1676,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "589:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "588:14:6"
+            },
+            "returnParameters": {
+              "id": 1681,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1680,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1682,
+                  "src": "627:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1679,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "627:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "626:9:6"
+            },
+            "scope": 1683,
+            "src": "572:64:6",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1684,
+        "src": "359:279:6"
+      }
+    ],
+    "src": "0:639:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronFactoryI.sol",
+    "exportedSymbols": {
+      "NeuronFactoryI": [
+        1683
+      ]
+    },
+    "id": 1684,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1673,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:6"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1674,
+          "nodeType": "StructuredDocumentation",
+          "src": "174:183:6",
+          "text": "The NeuronFactoryI contract is an interface contract used by the Hippocampus to select a Neuron by name and genesis a\nnew intstance of that neuron from is Neuron Factory*"
+        },
+        "fullyImplemented": false,
+        "id": 1683,
+        "linearizedBaseContracts": [
+          1683
+        ],
+        "name": "NeuronFactoryI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": {
+              "id": 1675,
+              "nodeType": "StructuredDocumentation",
+              "src": "398:169:6",
+              "text": "@notice genesis is called to create a new FrontalLobe contract\n@param _DAO is the address of the Cortex DAO that will own the created\nFrontalLobe*"
+            },
+            "functionSelector": "77222509",
+            "id": 1682,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "genesis",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1678,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1677,
+                  "mutability": "mutable",
+                  "name": "_DAO",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1682,
+                  "src": "589:12:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1676,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "589:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "588:14:6"
+            },
+            "returnParameters": {
+              "id": 1681,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1680,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1682,
+                  "src": "627:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1679,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "627:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "626:9:6"
+            },
+            "scope": 1683,
+            "src": "572:64:6",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1684,
+        "src": "359:279:6"
+      }
+    ],
+    "src": "0:639:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.6+commit.6c089d02.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2021-01-22T01:08:56.695Z",
+  "devdoc": {
+    "methods": {
+      "genesis(address)": {
+        "params": {
+          "_DAO": "is the address of the Cortex DAO that will own the created FrontalLobe*"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "genesis(address)": {
+        "notice": "genesis is called to create a new FrontalLobe contract"
+      }
+    },
+    "notice": "The NeuronFactoryI contract is an interface contract used by the Hippocampus to select a Neuron by name and genesis a new intstance of that neuron from is Neuron Factory*"
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "contractName": "NeuronI",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "isBurner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isDelegator",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isMinter",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"isBurner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isDelegator\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isMinter\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{},\"notice\":\"The CortexI contract is an interface contract used by the cortex do gather Neuron permission data when installing a neuron. This Interface can be inherited by a Neuron.*\"}},\"settings\":{\"compilationTarget\":{\"/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronI.sol\":\"NeuronI\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronI.sol\":{\"keccak256\":\"0xf5c6138dc80bc59588aff7aa46170b41ba27fe25ebe1335b7bfc5f1cb0718cb5\",\"urls\":[\"bzz-raw://d09a79b2fdb33e5e33786d5c2d764eafb01ce595cf75b942c65f8730b89574d2\",\"dweb:/ipfs/QmUipde6GsJvcE5HL9kcMXTv7M7iLbSN4pKX3mvnP6GYpn\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.6.2;\n\n/// @title NeuronI\n/// @author Christopher Dixon\n////////////////////////////////////////////////////////////////////////////////////////////\n/**\nThe CortexI contract is an interface contract used by the cortex do gather Neuron permission data\n      when installing a neuron. This Interface can be inherited by a Neuron.\n**/\n\nabstract contract NeuronI {\n    /// @notice isMinter is a function used to help set up a FrontalLobe to a Cortex properly\n    bool public isMinter;\n    /// @notice isBurner is a function used to help set up a FrontalLobe to a Cortex properly\n    bool public isBurner;\n    /// @notice isDelegator is a function used to help set up a FrontalLobe to a Cortex properly\n    bool public isDelegator;\n}\n",
+  "sourcePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronI.sol",
+  "ast": {
+    "absolutePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronI.sol",
+    "exportedSymbols": {
+      "NeuronI": [
+        1693
+      ]
+    },
+    "id": 1694,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1685,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:7"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1686,
+          "nodeType": "StructuredDocumentation",
+          "src": "167:182:7",
+          "text": "The CortexI contract is an interface contract used by the cortex do gather Neuron permission data\nwhen installing a neuron. This Interface can be inherited by a Neuron.*"
+        },
+        "fullyImplemented": true,
+        "id": 1693,
+        "linearizedBaseContracts": [
+          1693
+        ],
+        "name": "NeuronI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "50e59eb3",
+            "id": 1688,
+            "mutability": "mutable",
+            "name": "isMinter",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1693,
+            "src": "477:20:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1687,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "477:4:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "91bf9de9",
+            "id": 1690,
+            "mutability": "mutable",
+            "name": "isBurner",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1693,
+            "src": "597:20:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1689,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "597:4:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "185ed831",
+            "id": 1692,
+            "mutability": "mutable",
+            "name": "isDelegator",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1693,
+            "src": "720:23:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1691,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "720:4:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1694,
+        "src": "351:395:7"
+      }
+    ],
+    "src": "0:747:7"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/NeuronI.sol",
+    "exportedSymbols": {
+      "NeuronI": [
+        1693
+      ]
+    },
+    "id": 1694,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1685,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:7"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1686,
+          "nodeType": "StructuredDocumentation",
+          "src": "167:182:7",
+          "text": "The CortexI contract is an interface contract used by the cortex do gather Neuron permission data\nwhen installing a neuron. This Interface can be inherited by a Neuron.*"
+        },
+        "fullyImplemented": true,
+        "id": 1693,
+        "linearizedBaseContracts": [
+          1693
+        ],
+        "name": "NeuronI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "50e59eb3",
+            "id": 1688,
+            "mutability": "mutable",
+            "name": "isMinter",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1693,
+            "src": "477:20:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1687,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "477:4:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "91bf9de9",
+            "id": 1690,
+            "mutability": "mutable",
+            "name": "isBurner",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1693,
+            "src": "597:20:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1689,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "597:4:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "185ed831",
+            "id": 1692,
+            "mutability": "mutable",
+            "name": "isDelegator",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 1693,
+            "src": "720:23:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 1691,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "720:4:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1694,
+        "src": "351:395:7"
+      }
+    ],
+    "src": "0:747:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.6+commit.6c089d02.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2021-01-22T01:08:56.695Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {},
+    "notice": "The CortexI contract is an interface contract used by the cortex do gather Neuron permission data when installing a neuron. This Interface can be inherited by a Neuron.*"
+  }
+}
