@@ -4,6 +4,7 @@ import "./Synaps.sol";
 import "../Interfaces/NeuronFactoryI.sol";
 import "../Interfaces/NeuronI.sol";
 import "../Matrix/Hippocampus.sol";
+import "../CoreNuerons/VotingApp.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
@@ -27,37 +28,16 @@ contract Cortex is Ownable {
     uint256 public synapsCount;
     /// @notice the synaps stored to the contract is the synaps used for
     mapping(uint256 => Synaps) public synapses;
-    /// @notice approvedMintContracts is a mapping of which addresses have the ability to call the proxyMint function
-    mapping(address => bool) public approvedMintContracts;
-    /// @notice approvedBurnContracts is a mapping of which addresses have the ability to call the proxyBurn function
-    mapping(address => bool) public approvedBurnContracts;
     /// @notice approvedDelegateCallContracts is a mapping of which addresses have the ability to call the delegateFunctionCall function
     mapping(address => bool) public approvedDelegateCallContracts;
     /// @notice installedNeurons is an address array containing the addresses of all installed Neurons
     address[] public installedNeurons;
 
-    /// @notice onlyApprovedMinter is a modifier that prevents an unapproved address from calling the proxyMint function
-    modifier onlyApprovedMinter() {
-        require(
-            approvedMintContracts[msg.sender] == true,
-            "Caller is not an approved Minter address"
-        );
-        _;
-    }
-    /// @notice onlyApprovedBurner is a modifier that prevents an unapproved address from calling the proxyBurn function
-    modifier onlyApprovedBurner() {
-        require(
-            approvedBurnContracts[msg.sender] == true,
-            "Caller is not an approved Burner address"
-        );
-        _;
-    }
-
     /// @notice onlyApprovedDelegator is a modifier that prevents an unapproved address from calling the delegateFunctionCall function
     modifier onlyApprovedDelegator() {
         require(
             approvedDelegateCallContracts[msg.sender] == true,
-            "Caller is not an approved Delegate address"
+            "Caller is not an approved Delegat address"
         );
         _;
     }
@@ -93,12 +73,24 @@ contract Cortex is Ownable {
                 _isTransferable,
                 true,
                 _CortexCreator,
+                0x0000000000000000000000000000000000000000,
                 _maxSupply
             );
         } else {
             synapses[0] = Synaps(_synaps);
         }
         synapsCount++;
+        VotingApp neuron = new VotingApp(
+          address(this)
+        );
+         neuron.connectNeuron(
+          address(synapses[0]),
+          50,
+          604800,
+          _isTransferable
+        );
+        approvedDelegateCallContracts[address(neuron)] = neuron.isDelegator();
+        installedNeurons.push(address(neuron));
     }
 
     ///fallback function so this contract can receive ETH
@@ -128,8 +120,6 @@ contract Cortex is Ownable {
         (bool success, bytes memory data) =
             payable(neu).call{value: _amount}(call_data);
         require(success, "failed calling connectNeuron");
-        approvedMintContracts[address(neuron)] = neuron.isMinter();
-        approvedBurnContracts[address(neuron)] = neuron.isBurner();
         approvedDelegateCallContracts[address(neuron)] = neuron.isDelegator();
         installedNeurons.push(address(neuron));
     }
@@ -139,6 +129,7 @@ contract Cortex is Ownable {
     @param _tokenName is the name of the DAO's rep token(if applicable)
     @param _tokenSym is the symbol of the DAO's rep token(if applicable)
     @param _CortexCreator is the address of the CortexCreator OR the address to receive the first synaps token
+    @param _bondingCurve allows a bonding curve contract to own the created synaps
     @param _isTransferable is a bool representing whether of not a synaps is transferable
     @param _isRep is a bool representing whether or not a synaps is used as reputation
     **/
@@ -146,6 +137,7 @@ contract Cortex is Ownable {
         string memory _tokenName,
         string memory _tokenSym,
         address _CortexCreator,
+        address _bondingCurve,
         bool _isTransferable,
         bool _isRep,
         uint256 _maxSupply
@@ -156,6 +148,7 @@ contract Cortex is Ownable {
             _isTransferable,
             _isRep,
             _CortexCreator,
+            _bondingCurve,
             _maxSupply
         );
         address syn = address(synapses[synapsCount]);
@@ -199,33 +192,7 @@ contract Cortex is Ownable {
         _to.transfer(_amount);
     }
 
-    /**
-    @notice proxyMint allows an approved minter address to mint tokens from the synaps contract
-    @param _to is the address tokens are being minted to
-    @param _amount is the amount of tokens being minted
-    **/
-    function proxyMint(
-        address _to,
-        uint256 _amount,
-        uint256 _synapsID
-    ) public onlyApprovedMinter {
-        Synaps syn = synapses[_synapsID];
-        syn._Mint(_to, _amount);
-    }
 
-    /**
-    @notice proxyBurn allows an approved burner address to burn the synaps tokens from an account
-    @param _from is the address the tokens are being burnt from
-    @param _amount is the amount of tokens being burnt
-    **/
-    function proxyBurn(
-        address _from,
-        uint256 _amount,
-        uint256 _synapsID
-    ) public onlyApprovedBurner {
-        Synaps syn = synapses[_synapsID];
-        syn._Burn(_from, _amount);
-    }
 
     ///////////////// Permission Function Calls////////////////////////////////////////////
     /**
@@ -235,44 +202,13 @@ contract Cortex is Ownable {
     **/
     /////////////////////////////////////////////////////////////////////////////////
 
-    /**
-    @notice addMinter allows the owner of this contract to add a address to the approved minter list
-    @param _minter is the address of the contract being added to the list
-    **/
-    function addMinter(address _minter) public onlyOwner {
-        approvedMintContracts[_minter] = true;
-    }
-
-    /**
-    @notice addBurner allows the owner of this contract to add a contract to the approved burner list
-    @param _burner is the address of the contract being added to the list
-    **/
-    function addBurner(address _burner) public onlyOwner {
-        approvedBurnContracts[_burner] = true;
-    }
 
     /**
     @notice addDelegate allows the owner of this contract to add a contract to the approved delegate list
     @param _delegate is the address of the contract being added to the list
     **/
     function addDelegate(address _delegate) public onlyOwner {
-        approvedBurnContracts[_delegate] = true;
-    }
-
-    /**
-        @notice addMinter allows the owner of this contract to add a address to the approved minter list
-        @param _minter is the address of the contract being added to the list
-        **/
-    function removeMinter(address _minter) public onlyOwner {
-        approvedMintContracts[_minter] = false;
-    }
-
-    /**
-        @notice addBurner allows the owner of this contract to add a contract to the approved burner list
-        @param _burner is the address of the contract being added to the list
-        **/
-    function removeBurner(address _burner) public onlyOwner {
-        approvedBurnContracts[_burner] = false;
+        approvedDelegateCallContracts[_delegate] = true;
     }
 
     /**
@@ -280,6 +216,6 @@ contract Cortex is Ownable {
         @param _delegate is the address of the contract being added to the list
         **/
     function removeDelegate(address _delegate) public onlyOwner {
-        approvedBurnContracts[_delegate] = false;
+        approvedDelegateCallContracts[_delegate] = false;
     }
 }

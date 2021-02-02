@@ -1,8 +1,8 @@
-const FrontalLobeFactory = artifacts.require("FrontalLobeFactory");
-const AxonFactory = artifacts.require("AxonFactory");
+const VotingAppFactory = artifacts.require("VotingAppFactory");
+const TokenLockFactory = artifacts.require("TokenLockFactory");
 
 
 module.exports = function (deployer) {
-  deployer.deploy(FrontalLobeFactory);
-  deployer.deploy(AxonFactory);
+  deployer.deploy(VotingAppFactory);
+  deployer.deploy(TokenLockFactory);
 };

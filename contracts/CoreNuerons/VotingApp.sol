@@ -7,15 +7,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-/// @title FrontalLobe
+/// @title VotingApp
 /// @author Christopher Dixon
 ////////////////////////////////////////////////////////////////////////////////////////////
 /**
-The FrontalLobe contract is designed to be a simplistic voting system for a Cortex based DAO. The FrontalLobe
+The VotingApp contract is designed to be a simplistic voting system for a Cortex based DAO. The VotingApp
       uses one synaps(or other ERC20) contract to determine a Cortex DAO members voting power.
 **/
 
-contract FrontalLobe is Ownable, NeuronI {
+contract VotingApp is Ownable, NeuronI {
     using SafeMath for uint256;
     /// @notice synaps is the address of the ERC20 token a zDAO is using for its reputation
     Synaps public synaps;

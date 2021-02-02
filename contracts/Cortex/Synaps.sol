@@ -19,7 +19,7 @@ contract Synaps is Ownable, ERC20 {
     uint256 public maxSupply;
     /// @notice transferable is a bool representing whether or not this rep token can be transfered by its owner
     bool public transferable;
-    ///@notice
+    ///@notice isRep signafies whether or not the synaps being created will be used as a DAO's rep token
     bool public isRep;
     /// @notice tokenTimeTracker is responsible for tracking when tokens are transfered from one account to another
     /// @dev this is important for making sure proposal voting cant be done with the same tokens using multiple
@@ -41,6 +41,7 @@ contract Synaps is Ownable, ERC20 {
      @param _DAOcreator is the address of the person who created the DAO that is creating this token.
      @dev if _DAOcreator is equal to the DAO(the msg.sender) and the token is not being used as a rep token
                 then the constructor will not mint a first token
+     @param _maxSupply is the maximum supply this synaps will be capped at(uncapped == 0)
      **/
     constructor(
         string memory _tokenName,
@@ -48,14 +49,18 @@ contract Synaps is Ownable, ERC20 {
         bool _isTransferable,
         bool _isRep,
         address _DAOcreator,
+        address _bondingCurve,
         uint256 _maxSupply
     ) public ERC20(_tokenName, _tokenSym) {
         transferable = _isTransferable;
         isRep = _isRep;
         maxSupply = _maxSupply;
-        if (_DAOcreator != msg.sender && _isRep == true) {
+        if (_isRep == true) {
             _mint(_DAOcreator, 1e18);
             tokenRelativity(_DAOcreator);
+        } else if(_bondingCurve != 0x0000000000000000000000000000000000000000){
+            _mint(_bondingCurve, 1e18);
+          transferOwnership(_bondingCurve);
         }
     }
 

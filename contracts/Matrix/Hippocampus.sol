@@ -14,8 +14,7 @@ The Hippocampus is designed to track and verify Nueron factory contracts
 
 contract Hippocampus is Ownable {
     using SafeMath for uint256;
-    /// @notice neuronCount is used to generate neuron IDs
-    uint256 public neuronCount;
+
 
     ///@notice neuralNetwork is used to track a neuron name to its factories address
     mapping(string => address) public neuralNetwork;
@@ -47,7 +46,6 @@ contract Hippocampus is Ownable {
         neuralNetwork[_NeuronName] = _neuronFactoryAddress;
         isNeuron[_neuronFactoryAddress] = true;
         coreNeurons.push(_neuronFactoryAddress);
-        neuronCount++;
     }
 
     /**
@@ -67,7 +65,6 @@ contract Hippocampus is Ownable {
         neuralNetwork[_NeuronName] = _neuronFactoryAddress;
         isNeuron[_neuronFactoryAddress] = true;
         peripheralNeurons.push(_neuronFactoryAddress);
-        neuronCount++;
     }
 
     /**

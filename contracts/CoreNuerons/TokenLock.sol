@@ -7,18 +7,18 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-/// @title Axon
+/// @title TokenLock
 /// @author Christopher Dixon
 ////////////////////////////////////////////////////////////////////////////////////////////
 /**
-The Axon contract is designed to be a token vesting contract for synapses that a cortex
+The TokenLock contract is designed to be a token vesting contract for synapses that a cortex
       can use through voting in the FrontalLobe
 **/
 
-contract Axon is Ownable, NeuronI {
+contract TokenLock is Ownable, NeuronI {
     using SafeMath for uint256;
 
-    /// @notice cortex is the address of the cortex that controls a Axon contract
+    /// @notice cortex is the address of the cortex that controls a TokenLock contract
     address public cortex;
     /// @notice vault is a mapping that tracks an address to a Vested struct
     mapping(address => Vested) public vault;
@@ -54,7 +54,7 @@ contract Axon is Ownable, NeuronI {
 
     /**
 @notice the constructor function is fired only once during contract creation and is used to set up
-   the Axon contract to Its Cortex
+   the TokenLock contract to Its Cortex
 **/
     constructor(address _cortex) public {
         cortex = _cortex;

@@ -2,6 +2,7 @@ pragma solidity ^0.6.2;
 pragma experimental ABIEncoderV2;
 
 import "../Cortex/Cortex.sol";
+import "../Cortex/Synaps.sol";
 import "./Hippocampus.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -39,7 +40,6 @@ contract Matrix is Ownable, Hippocampus {
             neuralNetwork[_NeuronNames[i]] = _initialCoreNeurons[i];
             isNeuron[_initialCoreNeurons[i]] = true;
             coreNeurons.push(_initialCoreNeurons[i]);
-            neuronCount = i;
         }
     }
 
@@ -80,8 +80,6 @@ contract Matrix is Ownable, Hippocampus {
                 _maxSupply
             );
             cortexTracker[_CortexName] = address(newCortex);
-            newCortex.addMinter(address(newCortex));
-            newCortex.addBurner(address(newCortex));
             newCortex.transferOwnership(msg.sender);
         } else {
           ///if we are using and existing token
@@ -121,5 +119,31 @@ contract Matrix is Ownable, Hippocampus {
     **/
     function cortexNameTaken(string memory _Name) public view returns (bool) {
         return nameTaken[_Name];
+    }
+
+/**
+@notice the createSynaps function allows a user to create their own synaps token
+@param _tokenName is the name of the token
+@param _tokenSym is the symbol of the token
+@param _Creator is the address of the person who created the synaps token.
+@param _bondingCurve allows a bonding curve contract to own the created synaps
+@param _maxSupply is the maximum supply this synaps will be capped at(uncapped == 0)
+**/
+    function createSynaps(
+      string memory _tokenName,
+      string memory _tokenSym,
+      address _Creator,
+      address _bondingCurve,
+      uint256 _maxSupply
+    ) public {
+      new Synaps(
+          _tokenName,
+          _tokenSym,
+          true,
+          false,
+          _Creator,
+          _bondingCurve,
+          _maxSupply
+      );
     }
 }

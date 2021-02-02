@@ -1,24 +1,24 @@
 pragma solidity ^0.6.2;
 
-import "../CoreNuerons/FrontalLobe.sol";
+import "../CoreNuerons/TokenLock.sol";
 import "../Matrix/Hippocampus.sol";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-/// @title FrontalLobeFactory
+/// @title TokenLockFactory
 /// @author Christopher Dixon
 ////////////////////////////////////////////////////////////////////////////////////////////
 /**
-The FrontalLobeFactory contract is designed to produce individual FrontalLobe contracts
+The TokenLockFactory contract is designed to produce individual TokenLock contracts
 **/
 
-contract FrontalLobeFactory {
+contract TokenLockFactory {
     /**
-    @notice genesis is called to create a new FrontalLobe contract
+    @notice genesis is called to create a new TokenLock contract
     @param _DAO is the address of the Cortex DAO that will own the created
-            FrontalLobe
+            TokenLock
     **/
     function genesis(address _DAO) public returns (address) {
-        FrontalLobe fl = new FrontalLobe(_DAO);
-        return address(fl);
+        TokenLock ax = new TokenLock(_DAO);
+        return address(ax);
     }
 }
