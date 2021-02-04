@@ -1,6 +1,5 @@
 pragma solidity ^0.6.2;
 
-import "./Synaps.sol";
 import "../Interfaces/NeuronFactoryI.sol";
 import "../Interfaces/NeuronI.sol";
 import "../Matrix/Hippocampus.sol";
@@ -27,7 +26,7 @@ contract Cortex is Ownable {
     /// @notice synapsCount is used to track the number of synaps contracts this cortex controls
     uint256 public synapsCount;
     /// @notice the synaps stored to the contract is the synaps used for
-    mapping(uint256 => Synaps) public synapses;
+    mapping(uint256 => address) public synapses;
     /// @notice approvedDelegateCallContracts is a mapping of which addresses have the ability to call the delegateFunctionCall function
     mapping(address => bool) public approvedDelegateCallContracts;
     /// @notice installedNeurons is an address array containing the addresses of all installed Neurons
@@ -47,7 +46,6 @@ contract Cortex is Ownable {
         the Cortex contract and its first synaps if applicable
      @dev this function automatically deploys a synaps for the DAO if the _synaps param is set to the 0x0 address
      @param _daoName is the name of the zDAO
-     @param _hippocampus is the address of the Hippocampus contract
      @param _tokenName is the name of the DAO's rep token(if applicable)
      @param _tokenSym is the symbol of the DAO's rep token(if applicable)
      @param _synaps is the address of an existing Synaps (or ERC20)
@@ -56,7 +54,6 @@ contract Cortex is Ownable {
     **/
     constructor(
         string memory _daoName,
-        address _hippocampus,
         string memory _tokenName,
         string memory _tokenSym,
         address _synaps,
@@ -65,26 +62,25 @@ contract Cortex is Ownable {
         uint256 _maxSupply
     ) public {
         daoName = _daoName;
-        hippocampus = Hippocampus(_hippocampus);
+        hippocampus = Hippocampus(msg.sender);
         if (_synaps == 0x0000000000000000000000000000000000000000) {
-            synapses[0] = new Synaps(
+            synapses[0] = hippocampus.createSynaps(
                 _tokenName,
                 _tokenSym,
                 _isTransferable,
                 true,
                 _CortexCreator,
-                0x0000000000000000000000000000000000000000,
                 _maxSupply
             );
         } else {
-            synapses[0] = Synaps(_synaps);
+            synapses[0] = _synaps;
         }
         synapsCount++;
         VotingApp neuron = new VotingApp(
           address(this)
         );
          neuron.connectNeuron(
-          address(synapses[0]),
+          synapses[0],
           50,
           604800,
           _isTransferable
@@ -129,7 +125,6 @@ contract Cortex is Ownable {
     @param _tokenName is the name of the DAO's rep token(if applicable)
     @param _tokenSym is the symbol of the DAO's rep token(if applicable)
     @param _CortexCreator is the address of the CortexCreator OR the address to receive the first synaps token
-    @param _bondingCurve allows a bonding curve contract to own the created synaps
     @param _isTransferable is a bool representing whether of not a synaps is transferable
     @param _isRep is a bool representing whether or not a synaps is used as reputation
     **/
@@ -137,21 +132,19 @@ contract Cortex is Ownable {
         string memory _tokenName,
         string memory _tokenSym,
         address _CortexCreator,
-        address _bondingCurve,
         bool _isTransferable,
         bool _isRep,
         uint256 _maxSupply
     ) public onlyOwner returns (address) {
-        synapses[synapsCount] = new Synaps(
+        synapses[synapsCount] = hippocampus.createSynaps(
             _tokenName,
             _tokenSym,
             _isTransferable,
             _isRep,
             _CortexCreator,
-            _bondingCurve,
             _maxSupply
         );
-        address syn = address(synapses[synapsCount]);
+        address syn = synapses[synapsCount];
         synapsCount++;
         return syn;
     }

@@ -49,7 +49,6 @@ contract Synaps is Ownable, ERC20 {
         bool _isTransferable,
         bool _isRep,
         address _DAOcreator,
-        address _bondingCurve,
         uint256 _maxSupply
     ) public ERC20(_tokenName, _tokenSym) {
         transferable = _isTransferable;
@@ -58,9 +57,6 @@ contract Synaps is Ownable, ERC20 {
         if (_isRep == true) {
             _mint(_DAOcreator, 1e18);
             tokenRelativity(_DAOcreator);
-        } else if(_bondingCurve != 0x0000000000000000000000000000000000000000){
-            _mint(_bondingCurve, 1e18);
-          transferOwnership(_bondingCurve);
         }
     }
 

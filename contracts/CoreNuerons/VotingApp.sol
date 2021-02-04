@@ -92,8 +92,6 @@ contract VotingApp is Ownable, NeuronI {
     constructor(address _DAO) public {
         transferOwnership(_DAO);
         cortex = CortexI(_DAO);
-        isMinter = true;
-        isBurner = true;
         isDelegator = true;
     }
 

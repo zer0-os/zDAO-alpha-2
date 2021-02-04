@@ -1,6 +1,7 @@
 pragma solidity ^0.6.2;
 
 import "../Interfaces/NeuronFactoryI.sol";
+import "../Cortex/Synaps.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
@@ -82,4 +83,31 @@ contract Hippocampus is Ownable {
         neuralMapFromCortex[_Cortex].push(neuron);
         return neuron;
     }
+
+    /**
+    @notice the createSynaps function allows a user to create their own synaps token
+    @param _tokenName is the name of the token
+    @param _tokenSym is the symbol of the token
+    @param _Creator is the address of the person who created the synaps token.
+    @param _maxSupply is the maximum supply this synaps will be capped at(uncapped == 0)
+    **/
+        function createSynaps(
+          string memory _tokenName,
+          string memory _tokenSym,
+          bool _isTransferable,
+          bool _isRep,
+          address _Creator,
+          uint256 _maxSupply
+        ) public
+        returns(address){
+        address syn = address(new Synaps(
+              _tokenName,
+              _tokenSym,
+              _isTransferable,
+              _isRep,
+              _Creator,
+              _maxSupply
+          ));
+          return syn;
+        }
 }

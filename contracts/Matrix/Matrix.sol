@@ -2,7 +2,6 @@ pragma solidity ^0.6.2;
 pragma experimental ABIEncoderV2;
 
 import "../Cortex/Cortex.sol";
-import "../Cortex/Synaps.sol";
 import "./Hippocampus.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -71,7 +70,6 @@ contract Matrix is Ownable, Hippocampus {
         if (_synaps == 0x0000000000000000000000000000000000000000) {
             newCortex = new Cortex(
                 _CortexName,
-                address(this),
                 _tokenName,
                 _tokenSym,
                 0x0000000000000000000000000000000000000000,
@@ -85,7 +83,6 @@ contract Matrix is Ownable, Hippocampus {
           ///if we are using and existing token
             newCortex = new Cortex(
                 _CortexName,
-                address(this),
                 _tokenName,
                 _tokenSym,
                 _synaps,
@@ -121,29 +118,5 @@ contract Matrix is Ownable, Hippocampus {
         return nameTaken[_Name];
     }
 
-/**
-@notice the createSynaps function allows a user to create their own synaps token
-@param _tokenName is the name of the token
-@param _tokenSym is the symbol of the token
-@param _Creator is the address of the person who created the synaps token.
-@param _bondingCurve allows a bonding curve contract to own the created synaps
-@param _maxSupply is the maximum supply this synaps will be capped at(uncapped == 0)
-**/
-    function createSynaps(
-      string memory _tokenName,
-      string memory _tokenSym,
-      address _Creator,
-      address _bondingCurve,
-      uint256 _maxSupply
-    ) public {
-      new Synaps(
-          _tokenName,
-          _tokenSym,
-          true,
-          false,
-          _Creator,
-          _bondingCurve,
-          _maxSupply
-      );
-    }
+
 }
