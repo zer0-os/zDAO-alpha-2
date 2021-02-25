@@ -1,4 +1,4 @@
-pragma solidity ^0.6.2;
+pragma solidity ^0.5.3;
 
 /// @title CortexI
 /// @author Christopher Dixon
@@ -8,7 +8,7 @@ The CortexI contract is an interface contract used by neurons to delegate a call
     Cortex Contract
 **/
 
-abstract contract CortexI {
+ contract CortexI {
     /**
   @notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex
   @param _target is the target address where the function will be called
@@ -19,5 +19,8 @@ abstract contract CortexI {
         address payable _target,
         uint256 _amount,
         bytes memory call_data
-    ) public virtual;
+    ) public;
+
+    function transferOwnership(address _newOwner) public;
+
 }

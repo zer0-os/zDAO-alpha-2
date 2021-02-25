@@ -1,0 +1,14 @@
+{
+  "contracts": {},
+  "solidityLibs": {},
+  "proxies": {
+    "zdao/Matrix": [
+      {
+        "address": "0xB133Ef106500f9A4B139256774d197BE5Dd4bf57",
+        "kind": "NonProxy",
+        "bytecodeHash": "071bfe062582fcee4972935db4cc05cd596e7b4159a49063fc5bf4418bfd62f8"
+      }
+    ]
+  },
+  "manifestVersion": "2.2"
+}

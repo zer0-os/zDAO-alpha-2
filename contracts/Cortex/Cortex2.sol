@@ -16,9 +16,10 @@ The Cortex contract is designed to be a bare bones, minimalistic approach to a v
     the control center that Allows a DAO to work with neuron contracts and contracts outside of the zer0 ecosystem.
 **/
 
-contract Cortex is Ownable {
+contract Cortex2 is Ownable {
     using SafeMath for uint256;
 
+    bool public upgradeSuccess;
     /// @notice the Cortex's name
     string public daoName;
     /// @notice the Matrix is the contract responsible for tracking neuron factories for installation
@@ -91,6 +92,7 @@ contract Cortex is Ownable {
         approvedDelegateCallContracts[address(neuron)] = neuron.isDelegator();
         installedNeurons.push(address(neuron));
         synapsCount++;
+        upgradeSuccess = true;
     }
 
     ///fallback function so this contract can receive ETH
@@ -214,5 +216,9 @@ contract Cortex is Ownable {
         **/
     function removeDelegate(address _delegate) public onlyOwner {
         approvedDelegateCallContracts[_delegate] = false;
+    }
+
+    function setUpgradeSuccess() public {
+      upgradeSuccess = true;
     }
 }

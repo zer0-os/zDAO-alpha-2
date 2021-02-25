@@ -3,9 +3,12 @@ const truffleAssert = require("truffle-assertions");
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 const Matrix = artifacts.require("Matrix");
 const VotingAppFactory = artifacts.require("VotingAppFactory");
+const TokenLockFactory = artifacts.require("TokenLockFactory");
 const Cortex = artifacts.require("Cortex");
 const Synaps = artifacts.require("Synaps");
 const VotingApp = artifacts.require("VotingApp");
+const Cortex2 = artifacts.require("Cortex2");
+
 
 contract("Matrix", (accounts) => {
   console.log("starting tests");
@@ -20,15 +23,18 @@ contract("Matrix", (accounts) => {
   let votingApp;
   let synapsLobeAdd;
 
+
   before(async function () {
     matrix = await Matrix.deployed();
+    console.log(Cortex.address)
+    console.log(Synaps.address)
     console.log(matrix.address)
   });
 /////////////////////////////////////////////////////////////////////////////
   it("should successfully deploy out a Cortex contract", async () => {
     console.log("Deploying Cortexy the Cortex");
     await matrix.createCortex(
-      "Cortexy",
+     "Cortexy",
      "CortextBucks",
      "CTB",
      "0x0000000000000000000000000000000000000000",
@@ -40,6 +46,8 @@ contract("Matrix", (accounts) => {
     cortexy = await Cortex.at(firstCortexAddress);
     console.log("test cortex created @:");
     console.log(firstCortexAddress);
+    let name = await cortexy.daoName();
+    console.log(name)
     let cortexOwnerAdd = await cortexy.owner();
     console.log("Cortexy Owner: " + cortexOwnerAdd);
     console.log("name marked taken: " + nameTaken);
@@ -117,6 +125,15 @@ contract("Matrix", (accounts) => {
     let TokenLockAddress = await cortexy.installedNeurons(0);
     console.log("Address of Cortexys TokenLock: " + TokenLockAddress);
     console.log("Proposal based neuroGenesis success!");
+  })
+  ////////////////////////////////////////////////////////////////////////////
+  it("should allow the matrix owner to upgrade cortexy", async () => {
+    matrix.updateCortex(Cortex2.address);
+    firstCortexAddress = await matrix.retrieveCortex("Cortexy");
+    let cortexy2 = await Cortex2.at(firstCortexAddress);
+    await cortexy2.setUpgradeSuccess();
+    await cortexy2.upgradeSuccess();
+    console.log(await cortexy2.upgradeSuccess())
   })
   ////////////////////////////////////////////////////////////////////////////
 });

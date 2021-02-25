@@ -1,10 +1,11 @@
-pragma solidity ^0.6.2;
+pragma solidity ^0.5.3;
 
 import "../Interfaces/CortexI.sol";
 import "../Interfaces/NeuronI.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/upgrades/contracts/Initializable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/IERC20.sol";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 /// @title TokenLock
@@ -15,8 +16,10 @@ The TokenLock contract is designed to be a token vesting contract for synapses t
       can use through voting in the FrontalLobe
 **/
 
-contract TokenLock is Ownable, NeuronI {
+contract TokenLock is Ownable {
     using SafeMath for uint256;
+    bool public isDelegator;
+
 
     /// @notice cortex is the address of the cortex that controls a TokenLock contract
     address public cortex;
@@ -53,12 +56,12 @@ contract TokenLock is Ownable, NeuronI {
     }
 
     /**
-@notice the constructor function is fired only once during contract creation and is used to set up
+@notice the initialize function is fired only once during contract creation and is used to set up
    the TokenLock contract to Its Cortex
 **/
-    constructor(address _cortex) public {
-        cortex = _cortex;
-        transferOwnership(_cortex);
+    function initialize(address _cortex) public initializer {
+      Ownable.initialize(_cortex);
+      cortex = _cortex;
     }
 
     /**

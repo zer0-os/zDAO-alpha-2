@@ -1,8 +1,10 @@
-pragma solidity ^0.6.2;
+pragma solidity ^0.5.3;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
+import "@openzeppelin/upgrades/contracts/Initializable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Detailed.sol";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 /// @title Synaps
@@ -12,7 +14,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 The Synaps is designed to be a flexible ERC20 token that can be used by a ZDAO in multiple ways.
 **/
 
-contract Synaps is Ownable, ERC20 {
+contract Synaps is  Initializable, ERC20, ERC20Detailed, Ownable {
     using SafeMath for uint256;
 
     /// @notice maxSupply is used as a cap on the tokens totalSupply
@@ -43,14 +45,18 @@ contract Synaps is Ownable, ERC20 {
                 then the constructor will not mint a first token
      @param _maxSupply is the maximum supply this synaps will be capped at(uncapped == 0)
      **/
-    constructor(
+    function initialize(
         string memory _tokenName,
         string memory _tokenSym,
         bool _isTransferable,
         bool _isRep,
         address _DAOcreator,
+        address _DAO,
         uint256 _maxSupply
-    ) public ERC20(_tokenName, _tokenSym) {
+    ) initializer
+    public {
+      ERC20Detailed.initialize(_tokenName, _tokenSym, 18);
+        Ownable.initialize(_DAO);
         transferable = _isTransferable;
         isRep = _isRep;
         maxSupply = _maxSupply;
@@ -79,7 +85,6 @@ contract Synaps is Ownable, ERC20 {
     **/
     function transfer(address recipient, uint256 amount)
         public
-        override
         returns (bool)
     {
         if (!transferable) {

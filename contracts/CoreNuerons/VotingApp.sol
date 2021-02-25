@@ -1,10 +1,11 @@
-pragma solidity ^0.6.2;
+pragma solidity ^0.5.3;
 
 import "../Cortex/Synaps.sol";
 import "../Interfaces/CortexI.sol";
 import "../Interfaces/NeuronI.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/upgrades/contracts/Initializable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 /// @title VotingApp
@@ -89,8 +90,8 @@ contract VotingApp is Ownable, NeuronI {
 @notice the constructor function is fired only once during contract creation and is used to set up
    the FrontalLobe contract to Its Cortex
 **/
-    constructor(address _DAO) public {
-        transferOwnership(_DAO);
+    function initialize(address _DAO) public initializer {
+        Ownable.initialize(_DAO);
         cortex = CortexI(_DAO);
         isDelegator = true;
     }
@@ -114,8 +115,6 @@ contract VotingApp is Ownable, NeuronI {
         proposalTime = _proposalTime;
     }
 
-    ///fallback function so this contract can receive ETH
-    receive() external payable {}
 
     /**
     @notice newProposaln allows a user to create a proposal

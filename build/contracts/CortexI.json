@@ -2,106 +2,103 @@
   "contractName": "CortexI",
   "abi": [
     {
+      "constant": false,
       "inputs": [
         {
-          "internalType": "address payable",
           "name": "_target",
           "type": "address"
         },
         {
-          "internalType": "uint256",
           "name": "_amount",
           "type": "uint256"
         },
         {
-          "internalType": "bytes",
           "name": "call_data",
           "type": "bytes"
         }
       ],
       "name": "delegateFunctionCall",
       "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"_target\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"call_data\",\"type\":\"bytes\"}],\"name\":\"delegateFunctionCall\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"delegateFunctionCall(address,uint256,bytes)\":{\"params\":{\"_amount\":\"is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\",\"_target\":\"is the target address where the function will be called\",\"call_data\":\"is a bytes representation of the function the Cortex is calling and its input paramters*\"}}}},\"userdoc\":{\"methods\":{\"delegateFunctionCall(address,uint256,bytes)\":{\"notice\":\"delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\"}},\"notice\":\"The CortexI contract is an interface contract used by neurons to delegate a call to the Cortex Contract*\"}},\"settings\":{\"compilationTarget\":{\"/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol\":\"CortexI\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol\":{\"keccak256\":\"0x15f1fdad89c29abe0ed29c6e0c7ec2950e0a3251604f480e2b8e74ad10ee5c32\",\"urls\":[\"bzz-raw://b3435a64986cd52b9b0251a311662ff43023432692df739cab6819ba73473ef4\",\"dweb:/ipfs/QmR9Nkgdi3trgzEi1iVQWv38ZahUezFaFfQw7Sn1ydey8r\"]}},\"version\":1}",
+  "metadata": "",
   "bytecode": "0x",
   "deployedBytecode": "0x",
-  "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.6.2;\n\n/// @title CortexI\n/// @author Christopher Dixon\n////////////////////////////////////////////////////////////////////////////////////////////\n/**\nThe CortexI contract is an interface contract used by neurons to delegate a call to the\n    Cortex Contract\n**/\n\nabstract contract CortexI {\n    /**\n  @notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n  @param _target is the target address where the function will be called\n  @param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n  @param call_data is a bytes representation of the function the Cortex is calling and its input paramters\n  **/\n    function delegateFunctionCall(\n        address payable _target,\n        uint256 _amount,\n        bytes memory call_data\n    ) public virtual;\n}\n",
+  "source": "pragma solidity ^0.5.3;\n\n/// @title CortexI\n/// @author Christopher Dixon\n////////////////////////////////////////////////////////////////////////////////////////////\n/**\nThe CortexI contract is an interface contract used by neurons to delegate a call to the\n    Cortex Contract\n**/\n\n contract CortexI {\n    /**\n  @notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n  @param _target is the target address where the function will be called\n  @param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n  @param call_data is a bytes representation of the function the Cortex is calling and its input paramters\n  **/\n    function delegateFunctionCall(\n        address payable _target,\n        uint256 _amount,\n        bytes memory call_data\n    ) public;\n\n    function transferOwnership(address _newOwner) public;\n\n}\n",
   "sourcePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol",
   "ast": {
     "absolutePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol",
     "exportedSymbols": {
       "CortexI": [
-        1671
+        1334
       ]
     },
-    "id": 1672,
+    "id": 1335,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1659,
+        "id": 1319,
         "literals": [
           "solidity",
           "^",
-          "0.6",
-          ".2"
+          "0.5",
+          ".3"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:5"
+        "src": "0:23:4"
       },
       {
-        "abstract": true,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
-        "documentation": {
-          "id": 1660,
-          "nodeType": "StructuredDocumentation",
-          "src": "167:115:5",
-          "text": "The CortexI contract is an interface contract used by neurons to delegate a call to the\nCortex Contract*"
-        },
+        "documentation": "The CortexI contract is an interface contract used by neurons to delegate a call to the\nCortex Contract*",
         "fullyImplemented": false,
-        "id": 1671,
+        "id": 1334,
         "linearizedBaseContracts": [
-          1671
+          1334
         ],
         "name": "CortexI",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": null,
-            "documentation": {
-              "id": 1661,
-              "nodeType": "StructuredDocumentation",
-              "src": "316:399:5",
-              "text": "@notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n@param _target is the target address where the function will be called\n@param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n@param call_data is a bytes representation of the function the Cortex is calling and its input paramters*"
-            },
-            "functionSelector": "92bd66c0",
-            "id": 1670,
+            "documentation": "@notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n@param _target is the target address where the function will be called\n@param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n@param call_data is a bytes representation of the function the Cortex is calling and its input paramters*",
+            "id": 1328,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "delegateFunctionCall",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 1668,
+              "id": 1326,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1663,
-                  "mutability": "mutable",
+                  "id": 1321,
                   "name": "_target",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1670,
-                  "src": "759:23:5",
+                  "scope": 1328,
+                  "src": "751:23:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -109,10 +106,10 @@
                     "typeString": "address payable"
                   },
                   "typeName": {
-                    "id": 1662,
+                    "id": 1320,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "759:15:5",
+                    "src": "751:15:4",
                     "stateMutability": "payable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
@@ -124,13 +121,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1665,
-                  "mutability": "mutable",
+                  "id": 1323,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1670,
-                  "src": "792:15:5",
+                  "scope": 1328,
+                  "src": "784:15:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -138,10 +133,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1664,
+                    "id": 1322,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "792:7:5",
+                    "src": "784:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -152,13 +147,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1667,
-                  "mutability": "mutable",
+                  "id": 1325,
                   "name": "call_data",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1670,
-                  "src": "817:22:5",
+                  "scope": 1328,
+                  "src": "809:22:4",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -166,10 +159,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 1666,
+                    "id": 1324,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "817:5:5",
+                    "src": "809:5:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -179,96 +172,136 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "749:96:5"
+              "src": "741:96:4"
             },
             "returnParameters": {
-              "id": 1669,
+              "id": 1327,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "860:0:5"
+              "src": "844:0:4"
             },
-            "scope": 1671,
-            "src": "720:141:5",
+            "scope": 1334,
+            "src": "712:133:4",
             "stateMutability": "nonpayable",
-            "virtual": true,
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1333,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferOwnership",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1331,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1330,
+                  "name": "_newOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1333,
+                  "src": "878:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1329,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "878:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "877:19:4"
+            },
+            "returnParameters": {
+              "id": 1332,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "903:0:4"
+            },
+            "scope": 1334,
+            "src": "851:53:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1672,
-        "src": "284:579:5"
+        "scope": 1335,
+        "src": "285:622:4"
       }
     ],
-    "src": "0:864:5"
+    "src": "0:908:4"
   },
   "legacyAST": {
     "absolutePath": "/home/stan36/repos/zer0/ZDAO/contracts/Interfaces/CortexI.sol",
     "exportedSymbols": {
       "CortexI": [
-        1671
+        1334
       ]
     },
-    "id": 1672,
+    "id": 1335,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1659,
+        "id": 1319,
         "literals": [
           "solidity",
           "^",
-          "0.6",
-          ".2"
+          "0.5",
+          ".3"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:5"
+        "src": "0:23:4"
       },
       {
-        "abstract": true,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
-        "documentation": {
-          "id": 1660,
-          "nodeType": "StructuredDocumentation",
-          "src": "167:115:5",
-          "text": "The CortexI contract is an interface contract used by neurons to delegate a call to the\nCortex Contract*"
-        },
+        "documentation": "The CortexI contract is an interface contract used by neurons to delegate a call to the\nCortex Contract*",
         "fullyImplemented": false,
-        "id": 1671,
+        "id": 1334,
         "linearizedBaseContracts": [
-          1671
+          1334
         ],
         "name": "CortexI",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": null,
-            "documentation": {
-              "id": 1661,
-              "nodeType": "StructuredDocumentation",
-              "src": "316:399:5",
-              "text": "@notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n@param _target is the target address where the function will be called\n@param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n@param call_data is a bytes representation of the function the Cortex is calling and its input paramters*"
-            },
-            "functionSelector": "92bd66c0",
-            "id": 1670,
+            "documentation": "@notice delegateFunctionCall allows a neuron contract to make an arbitrary call from the Cortex\n@param _target is the target address where the function will be called\n@param _amount is an eth amount to be passed from the Cortex in the function call(put zero if not applicable)\n@param call_data is a bytes representation of the function the Cortex is calling and its input paramters*",
+            "id": 1328,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "delegateFunctionCall",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
-              "id": 1668,
+              "id": 1326,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1663,
-                  "mutability": "mutable",
+                  "id": 1321,
                   "name": "_target",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1670,
-                  "src": "759:23:5",
+                  "scope": 1328,
+                  "src": "751:23:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -276,10 +309,10 @@
                     "typeString": "address payable"
                   },
                   "typeName": {
-                    "id": 1662,
+                    "id": 1320,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "759:15:5",
+                    "src": "751:15:4",
                     "stateMutability": "payable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
@@ -291,13 +324,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1665,
-                  "mutability": "mutable",
+                  "id": 1323,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1670,
-                  "src": "792:15:5",
+                  "scope": 1328,
+                  "src": "784:15:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -305,10 +336,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1664,
+                    "id": 1322,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "792:7:5",
+                    "src": "784:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -319,13 +350,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1667,
-                  "mutability": "mutable",
+                  "id": 1325,
                   "name": "call_data",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 1670,
-                  "src": "817:22:5",
+                  "scope": 1328,
+                  "src": "809:22:4",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -333,10 +362,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 1666,
+                    "id": 1324,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "817:5:5",
+                    "src": "809:5:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -346,34 +375,89 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "749:96:5"
+              "src": "741:96:4"
             },
             "returnParameters": {
-              "id": 1669,
+              "id": 1327,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "860:0:5"
+              "src": "844:0:4"
             },
-            "scope": 1671,
-            "src": "720:141:5",
+            "scope": 1334,
+            "src": "712:133:4",
             "stateMutability": "nonpayable",
-            "virtual": true,
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1333,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferOwnership",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1331,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1330,
+                  "name": "_newOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1333,
+                  "src": "878:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1329,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "878:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "877:19:4"
+            },
+            "returnParameters": {
+              "id": 1332,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "903:0:4"
+            },
+            "scope": 1334,
+            "src": "851:53:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 1672,
-        "src": "284:579:5"
+        "scope": 1335,
+        "src": "285:622:4"
       }
     ],
-    "src": "0:864:5"
+    "src": "0:908:4"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.6.6+commit.6c089d02.Emscripten.clang"
+    "version": "0.5.3+commit.10d17f24.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.3.2",
-  "updatedAt": "2021-01-22T01:08:56.694Z",
+  "updatedAt": "2021-02-25T00:55:11.390Z",
   "devdoc": {
     "methods": {
       "delegateFunctionCall(address,uint256,bytes)": {
